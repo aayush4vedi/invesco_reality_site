@@ -526,7 +526,7 @@ figure {
   text-decoration: none;
 }
 #fh5co-header nav ul li.cta {
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 @media screen and (max-width: 992px) {
   #fh5co-header nav ul li.cta {
@@ -1699,11 +1699,11 @@ figure {
   float: left;
 }
 #fh5co-offcanvas ul li.cta a {
-  padding-left: 16px !important;
+  /* padding-left: 16px !important; */
   padding-right: 16px !important;
   padding-top: 7px !important;
   padding-bottom: 7px !important;
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  /* border: 2px solid rgba(255, 255, 255, 0.7); */
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
