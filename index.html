@@ -27,7 +27,33 @@
       name="keywords"
       content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
     />
-    <meta name="author" content="FreeHTML5.co" />
+
+    <!-- Firebase JS -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script> -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script>
+    //this one is for eurekea-striper
+    var firebaseConfig = {
+        apiKey: "AIzaSyDbmLjl3Z9VDtWb0jA-mGqNwBZK9VMohrs",
+        authDomain: "invesco-realty.firebaseapp.com",
+        projectId: "invesco-realty",
+        storageBucket: "invesco-realty.appspot.com",
+        messagingSenderId: "997090472940",
+        appId: "1:997090472940:web:a568984cbc6311cb5ac6c9",
+        measurementId: "G-B2M6H78H55",
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+    </script>
 
     <!-- 
 	 -->
@@ -204,29 +230,20 @@
                 </div>
                 <div class="right-container">
                   <div class="right-inner-container">
-                    <form action="#">
+                    <form id='details-form1'>
+                      <!-- TODO: validation & error breadcrumbs -->
                       <h2 class="lg-view">Enter Your Details</h2>
                       <h2 class="sm-view">Details</h2>
                       <p style="margin: 0">* Required</p>
-                      <div class="social-container">
-                        <a href="#" class="social"
-                          ><i class="fab fa-facebook-f"></i
-                        ></a>
-                        <a href="#" class="social"
-                          ><i class="fab fa-google-plus-g"></i
-                        ></a>
-                        <a href="#" class="social"
-                          ><i class="fab fa-linkedin-in"></i
-                        ></a>
-                      </div>
-                      <input type="text" placeholder="Name *" />
-                      <input type="phone" placeholder="Phone *" />
-                      <input type="email" placeholder="Email" />
+                      <input type="text" placeholder="Name *"  id='name1' required />
+                      <input type="phone" placeholder="Phone *" id='phone1' required />
+                      <input type="email" placeholder="Email" id='email1'>
                       <textarea
-                        rows="4"
+                        rows="3"
                         placeholder="Message (optional)"
+                        id='msg1'
                       ></textarea>
-                      <button>Submit</button>
+                      <button type="submit" id="submit-btn1">Submit</button>
                     </form>
                   </div>
                 </div>
@@ -245,17 +262,15 @@
 				<a href="#" class="btn-close closemodale" aria-hidden="true">&times;</a>
 				</div>
 				<div class="modal-body">
-				<!-- <input type="text" name="u" placeholder="User" size="20" /><br>
-				<input type="text" name="p" placeholder="&bull;&bull;&bull;&bull;" size="20" /></div> -->
-					<input type="text" placeholder="Name *" />
-					<input type="phone" placeholder="Phone *" />
-					<input type="email" placeholder="Email" />
-					<p style="margin-top: -180px;color: #bf0404;float: left;" class="required-star">* Required</p>
-				<div class="modal-footer">
-			
-
-				<!-- <a href="#" class="btn btn-primary" id="btn_ingresar">Submit</a> -->
-				<a href="#" class="btn btn-primary with-arrow" id="btn_ingresar">Submit<i class="icon-arrow-right"></i></a>
+          <form>
+            <input type="text" placeholder="Name *" id='name2' required/>
+            <input type="phone" placeholder="Phone *" id='phone2' required/>
+            <input type="email" placeholder="Email" id='email2'/>
+            <p style="margin-top: -180px;color: #bf0404;float: left;" class="required-star">* Required</p>
+          </form>
+          <div class="modal-footer">
+          <!-- <a href="#" class="btn btn-primary" id="btn_ingresar">Submit</a> -->
+          <a href="#" class="btn btn-primary with-arrow" id="modal-submit" type="submit">Submit<i class="icon-arrow-right"></i></a>
 				</div>
 			</div>
 			</div>
@@ -943,5 +958,6 @@
 
     <!-- MAIN JS -->
     <script src="js/main.js"></script>
+
   </body>
 </html>

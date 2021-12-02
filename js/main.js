@@ -269,3 +269,53 @@ $(".closemodale").click(function (e) {
   e.preventDefault();
   $(".modale").removeClass("opened");
 });
+// firebase config
+
+var config = {
+  apiKey: "AIzaSyDbmLjl3Z9VDtWb0jA-mGqNwBZK9VMohrs",
+  authDomain: "invesco-realty.firebaseapp.com",
+  projectId: "invesco-realty",
+  storageBucket: "invesco-realty.appspot.com",
+  messagingSenderId: "997090472940",
+  appId: "1:997090472940:web:a568984cbc6311cb5ac6c9",
+  measurementId: "G-B2M6H78H55",
+  databaseURL: 'https://invesco-realty.firebaseio.com'
+};
+
+// firebase.initializeApp(config);
+
+var msgref = firebase.database().ref("leads");
+
+$('#submit-btn1').click(function (e) {
+  e.preventDefault()
+  var name = $('#name1').val()
+  var phone = $("#phone1").val();
+  var email = $('#email1').val()
+  var msg = $("#msg1").val();
+
+  //submit form
+  save_to_firebase(name, phone, email, msg)
+  console.log('submitted 1');
+})
+
+$("#modal-submit").click(function (e) {
+  e.preventDefault();
+  var name = $("#name2").val();
+  var phone = $("#phone2").val();
+  var email = $("#email2").val();
+
+  //submit form
+  save_to_firebase(name, phone, email, '');
+  console.log("submitted 2");
+});
+
+function save_to_firebase(name, phone, email, msg) {
+  var newmsgref = msgref.push();
+  newmsgref.set({
+    name : name,
+    phone : phone,
+    email : email,
+    msg : msg
+  })
+}
+
