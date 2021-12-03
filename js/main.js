@@ -14,6 +14,10 @@ $(document).ready(function () {
     }
   };
 
+  var alert = $(".alert-container");
+
+  alert.hide();
+
   // Find all data-toggle="sticky-onscroll" elements
   $('[data-toggle="sticky-onscroll"]').each(function () {
     var sticky = $(this);
@@ -30,7 +34,6 @@ $(document).ready(function () {
     stickyToggle(sticky, stickyWrapper, $(window));
   });
 });
-
 
 (function () {
   "use strict";
@@ -258,8 +261,6 @@ $(document).ready(function () {
   });
 })();
 
-
-
 $(".openmodale").click(function (e) {
   e.preventDefault();
   $(".modale").addClass("opened");
@@ -279,24 +280,50 @@ var config = {
   messagingSenderId: "997090472940",
   appId: "1:997090472940:web:a568984cbc6311cb5ac6c9",
   measurementId: "G-B2M6H78H55",
-  databaseURL: 'https://invesco-realty.firebaseio.com'
+  databaseURL: "https://invesco-realty.firebaseio.com",
 };
 
 // firebase.initializeApp(config);
 
 var msgref = firebase.database().ref("leads");
 
-$('#submit-btn1').click(function (e) {
-  e.preventDefault()
-  var name = $('#name1').val()
+$("#submit-btn1").click(function (e) {
+  e.preventDefault();
+  var name = $("#name1").val();
   var phone = $("#phone1").val();
-  var email = $('#email1').val()
+  var email = $("#email1").val();
   var msg = $("#msg1").val();
 
+
+  if (name.length == 0) {
+    $("#name-err-msg1").removeClass("err-msg");
+    $("#name1").addClass("erred-input");
+  } else if (!regexPhoneNumber(phone)) {
+    $("#name-err-msg1").addClass("err-msg");
+
+    $("#phone-err-msg1").removeClass("err-msg");
+    $("#name1").removeClass("erred-input");
+
+    $("#phone1").addClass("erred-input");
+  } else {
+    $("#name-err-msg1").addClass("err-msg");
+    $("#phone-err-msg1").addClass("err-msg");
+
+    //submit form
+    $("#name1").removeClass("erred-input");
+    $("#phone1").removeClass("erred-input");
+    save_to_firebase(name, phone, email, "");
+
+    launch_toast(e);
+    $("#submit-btn1").addClass("disable-click");
+    $(".modale").removeClass("opened");
+  }
+
+
   //submit form
-  save_to_firebase(name, phone, email, msg)
-  console.log('submitted 1');
-})
+  save_to_firebase(name, phone, email, msg);
+  console.log("submitted 1");
+});
 
 $("#modal-submit").click(function (e) {
   e.preventDefault();
@@ -304,18 +331,53 @@ $("#modal-submit").click(function (e) {
   var phone = $("#phone2").val();
   var email = $("#email2").val();
 
-  //submit form
-  save_to_firebase(name, phone, email, '');
-  console.log("submitted 2");
+  if (name.length == 0) {
+    $("#name-err-msg2").removeClass("err-msg");
+    $("#name2").addClass("erred-input");
+  } else if (!regexPhoneNumber(phone)) {
+
+    $("#name-err-msg2").addClass("err-msg");
+
+    $("#phone-err-msg2").removeClass("err-msg");
+    $("#name2").removeClass("erred-input");
+    $("#phone2").addClass("erred-input");
+  } else {
+
+    $("#name-err-msg2").addClass("err-msg");
+    $("#phone-err-msg2").addClass("err-msg");
+
+    //submit form
+    $("#name2").removeClass("erred-input");
+    $("#phone2").removeClass("erred-input");
+    save_to_firebase(name, phone, email, "");
+    
+    launch_toast(e);
+    $("#modal-submit").addClass("disable-click");
+    $(".modale").removeClass("opened");
+  }
 });
 
 function save_to_firebase(name, phone, email, msg) {
   var newmsgref = msgref.push();
   newmsgref.set({
-    name : name,
-    phone : phone,
-    email : email,
-    msg : msg
-  })
+    name: name,
+    phone: phone,
+    email: email,
+    msg: msg,
+  });
 }
 
+function regexPhoneNumber(input_str) {
+  var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+  return re.test(input_str);
+}
+
+function launch_toast(e) {
+  e.preventDefault();
+  var x = document.getElementById("toast");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 5000);
+}

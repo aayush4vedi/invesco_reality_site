@@ -117,10 +117,10 @@
               </h1>
               <nav role="navigation" >
                 <ul>
-                  <li><a href="best-deal">About</a></li>
+                  <li><a href="#">About</a></li>
                   <li><a href="#maps">Get Location</a></li>
                   <li class="call"><i class="icon-phone"></i> 9958908047</li>
-                  <li class="cta-1"> <a href="https://api.whatsapp.com/send?phone=918586030635&amp;text=Hi,%20I%20am%20interested%20in%20Omaxe%20Chandni%20Chowk,%20Please%20share%20the%20details." target="_blank"> <img src="images/whatsapp-icon.png" alt="Whatsapp"/></li>
+                  <li class="cta-1"> <a href="https://api.whatsapp.com/send?phone=919582677017&amp;text=Hi,%20I%20am%20interested%20in%20Omaxe%20Chandni%20Chowk,%20Please%20share%20the%20details." target="_blank"> <img src="images/whatsapp-icon.png" alt="Whatsapp"/></li>
                   <li class="cta">
                     <a href="#callback-form" class="btn btn-primary openmodale" style="color: #fff">Contact Us</a>
                   </li>
@@ -151,7 +151,7 @@
                   <div class="fh5co-property-brief-inner">
                     <div class="fh5co-box">
                       <h1 >
-                        <a href="#" style="color: #000"> <strong>PRE-LEASED SHOPS<span style="color: #b10303;"><br> @ OMAXE CHOWK</span> </strong> </a>
+                        <a style="color: #000"> <strong>PRE-LEASED SHOPS<span style="color: #b10303;"><br> @ OMAXE CHOWK</span> </strong> </a>
                       </h1>
 					  <h3 style="margin-top: -15px;">In the Heart of Chandni Chowk, Delhi</h3>
 					  <!-- <h4 style="font-size:14px">At Gandhi Maiden Parking, Opp. Gurdwara Sisganj Sahib ji</h4> -->
@@ -230,14 +230,20 @@
                 </div>
                 <div class="right-container">
                   <div class="right-inner-container">
-                    <form id='details-form1'>
+                    <form >
                       <!-- TODO: validation & error breadcrumbs -->
                       <h2 class="lg-view">Enter Your Details</h2>
                       <h2 class="sm-view">Details</h2>
-                      <p style="margin: 0">* Required</p>
-                      <input type="text" placeholder="Name *"  id='name1' required />
-                      <input type="phone" placeholder="Phone *" id='phone1' required />
-                      <input type="email" placeholder="Email" id='email1'>
+                      <p style="margin: 0; color: #b10303;" >* Required</p>
+
+                      <input type="text" placeholder="Name *" name='name'  id='name1' required />
+                      <p class="required-star err-msg" id='name-err-msg1'> * Please Enter Your Name </p>
+
+                      <input type="phone" placeholder="Phone *" name='phone' id='phone1' required />
+                      <p class="required-star err-msg" id='phone-err-msg1'> * Please Enter A Valid Phone Number </p>
+
+                      <input type="email" placeholder="Email"name='email'  id='email1' />
+                      
                       <textarea
                         rows="3"
                         placeholder="Message (optional)"
@@ -253,6 +259,13 @@
         </div>
       </div>
 
+    <div>
+      <div id="toast">
+        <!-- <div id="img">Icon</div> -->
+        <div id="desc" style="text-transform: uppercase;">Thanks! We'll Reach Out To You Soon.</div>
+      </div>
+    </div>
+
 	  <div>
 		  <!-- Modal -->
 			<div class="modale" aria-hidden="true">
@@ -262,11 +275,13 @@
 				<a href="#" class="btn-close closemodale" aria-hidden="true">&times;</a>
 				</div>
 				<div class="modal-body">
+          <p style="float: left; margin-bottom: 0;" class="required-star">* Required</p>
           <form>
-            <input type="text" placeholder="Name *" id='name2' required/>
+            <input type="text" placeholder="Name *" id='name2' required />
+            <p class="required-star err-msg" id='name-err-msg2'> * Please Enter Your Name </p>
             <input type="phone" placeholder="Phone *" id='phone2' required/>
+            <p class="required-star err-msg" id='phone-err-msg2'> * Please Enter A Valid Phone Number </p>
             <input type="email" placeholder="Email" id='email2'/>
-            <p style="margin-top: -180px;color: #bf0404;float: left;" class="required-star">* Required</p>
           </form>
           <div class="modal-footer">
           <!-- <a href="#" class="btn btn-primary" id="btn_ingresar">Submit</a> -->
@@ -309,7 +324,7 @@
                   <!-- <a href="#" class="tag">Get Details</a> -->
                 </figure>
                 <div class="fh5co-property-innter">
-                  <h3><a href="#">Construction in Full Swing</a></h3>
+                  <h3><a href="#" class="openmodale">Construction in Full Swing</a></h3>
                   <!-- <div class="price-status">
                     <span class="price">$540,000 </span>
                   </div> -->
@@ -349,7 +364,7 @@
                   <!-- <a href="#" class="tag">Get Details</a> -->
                 </figure>
                 <div class="fh5co-property-innter">
-                  <h3><a href="#">Re-development of Chandni Chowk</a></h3>
+                  <h3><a href="#" class="openmodale">Re-development of Chandni Chowk</a></h3>
                   <!-- <div class="price-status">
                     <span class="price">$540,000 </span>
                   </div> -->
@@ -388,7 +403,7 @@
                   <!-- <a href="#" class="tag">Get Details</a> -->
                 </figure>
                 <div class="fh5co-property-innter">
-                  <h3><a href="#">Omaxe Ties-Up with JSPL</a></h3>
+                  <h3><a href="#" class="openmodale">Omaxe Ties-Up with JSPL</a></h3>
                   <!-- <div class="price-status">
                     <span class="price">$540,000 </span>
                   </div> -->
@@ -961,3 +976,25 @@
 
   </body>
 </html>
+
+
+
+<div class="b"></div>
+<div class="bb"></div>
+<button id="go">
+  GO
+</button>
+<div class="message">
+  <div class="check">
+    &#10004;
+  </div>
+  <p>
+    Success
+  </p>
+  <p>
+    Check your email for a booking confirmation. We'll see you soon!
+  </p>
+  <button id="ok">
+    OK
+  </button>
+</div>
