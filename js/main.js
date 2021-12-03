@@ -359,11 +359,13 @@ $("#modal-submit").click(function (e) {
 
 function save_to_firebase(name, phone, email, msg) {
   var newmsgref = msgref.push();
+  var when = new Date().toLocaleString()
   newmsgref.set({
     name: name,
     phone: phone,
     email: email,
     msg: msg,
+    when: when
   });
 }
 
