@@ -286,6 +286,7 @@ var config = {
 // firebase.initializeApp(config);
 
 var msgref = firebase.database().ref("leads");
+var clicks_on_whatsapp_btn = firebase.database().ref("clicks-on-whatsapp-btn");
 
 $("#submit-btn1").click(function (e) {
   e.preventDefault();
@@ -365,6 +366,20 @@ function save_to_firebase(name, phone, email, msg) {
     phone: phone,
     email: email,
     msg: msg,
+    when: when
+  });
+}
+
+$(".whatsapp-me-btn").click(function (e) {
+  register_whatsapp_click_btn();
+
+})
+
+function register_whatsapp_click_btn() {
+  var new_clicks_on_whatsapp_btn = clicks_on_whatsapp_btn.push()
+  var when = new Date().toLocaleString();
+
+  new_clicks_on_whatsapp_btn.set({
     when: when
   });
 }
