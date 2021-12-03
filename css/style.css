@@ -2528,6 +2528,14 @@ form p {
     opacity: 0.7;
 }
 
+.whatsapp-now{
+  transform: scale(1.2);
+      -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
 @media only screen and (max-width: 767px) {
 
    h1 {
@@ -2562,4 +2570,9 @@ form p {
      font-size: 0.8 em;
    }
 
+   .btn-primary.btn-outline {
+     background: #118df0;
+   }
+
 }
+
